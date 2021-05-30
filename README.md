@@ -19,3 +19,5 @@ A project for Black Ops 2 Zombies.
 - Unique player character looks
 - Custom Pack a Punch Camo
 - Over 190 custom texture files
+
+!! DONT HATE A NOOB CODER! JUST ENJOY THE MOD YEH?? ! ;D
