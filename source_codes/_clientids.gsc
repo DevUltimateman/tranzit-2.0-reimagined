@@ -57,6 +57,11 @@ init()
     level.unbuild_overheated_jetgun = false;
     level.take_overheated_jetgun = true;
 
+    //level.equipment_etrap_needs_power = 0;
+	//level.equipment_turret_needs_power = 0;
+
+    
+
     level.limited_weapons = [];
     level._limited_equipment = [];
 
@@ -356,7 +361,7 @@ onPlayerSpawned()  //on player spawn
         self freezecontrols( false );
 
         self.score = 1750;
-
+        self thread equipment_in_use();
         if ( level.script == "zm_transit" )
         {
             wait 1;
@@ -373,10 +378,105 @@ onPlayerSpawned()  //on player spawn
         
         never_run_out_of_breath();
 
+        level thread after_quickie_do_these();
+
         
 
         
     }
+}
+
+after_quickie_do_these()
+{
+    level endon ( "game_ended" );
+
+    flag_wait ( "start_zombie_round_logic" );
+    wait 0.05;
+    remove_eTrap_kill_limit();
+    
+    
+}
+
+remove_eTrap_kill_limit() //remove the health cap
+{
+	level.etrap_damage = maps/mp/zombies/_zm::ai_zombie_health( 255 );
+}
+
+equipment_in_use() //credit to Jbleezy
+{
+	self endon( "disconnect" );
+
+	for ( ;; )
+	{
+		self waittill( "equipment_placed", weapon, weapname );
+
+		if ( (IsDefined( level.turret_name) && weapname == level.turret_name ) || (IsDefined(level.electrictrap_name) && weapname == level.electrictrap_name )  )
+		{
+			weapon.local_power = maps/mp/zombies/_zm_power::add_local_power( weapon.origin, 16 );
+
+			if ( IsDefined(level.electrictrap_name) && weapname == level.electrictrap_name )
+			{
+				self thread electrictrap_decay( weapon );
+			}
+
+			wait 0.05;
+
+			weapon.power_on = 1;
+
+		}
+	}
+}
+
+electrictrap_decay( weapon )
+{
+	self endon( "death" );
+	self endon( "disconnect" );
+
+	if ( !isDefined( self.electrictrap_health ) )
+	{
+		self.electrictrap_health = 180;
+	}
+
+	while ( isDefined( weapon ) )
+	{
+		if ( weapon.power_on )
+		{
+			self.electrictrap_health--;
+
+			if ( self.electrictrap_health <= 0 )
+			{
+				self thread electrictrap_expired( weapon );
+				return;
+			}
+		}
+		wait 1;
+	}
+}
+
+electrictrap_expired( weapon )
+{
+	maps/mp/zombies/_zm_equipment::equipment_disappear_fx( weapon.origin );
+	self cleanupoldtrap();
+	self maps/mp/zombies/_zm_equipment::equipment_release( level.electrictrap_name );
+	self.electrictrap_health = undefined;
+}
+
+cleanupoldtrap()
+{
+	if ( isDefined( self.buildableelectrictrap ) )
+	{
+		if ( isDefined( self.buildableelectrictrap.stub ) )
+		{
+			thread maps/mp/zombies/_zm_unitrigger::unregister_unitrigger( self.buildableelectrictrap.stub );
+			self.buildableelectrictrap.stub = undefined;
+		}
+		self.buildableelectrictrap delete();
+	}
+	if ( isDefined( level.electrap_sound_ent ) )
+	{
+		level.electrap_sound_ent delete();
+		level.electrap_sound_ent = undefined;
+	}
 }
 
 jetGun() //bandit
@@ -538,7 +638,7 @@ dayNightCycle() // day & night cycle for Tranzit 2.0 with r_exposure; //move thi
                    
             }
 
-            daynumber = randomIntRange ( 1, 37 ); // 1, 27
+            daynumber = randomIntRange ( 1, 39 ); // 1, 27
 
             if (  exposure == 5.723 && daynumber == 12 && bleed == 5.7 && light == 30  ) //need to fix, error due to yLow remove
             {
