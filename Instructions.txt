@@ -1,6 +1,14 @@
 // Mod creator: Ultimateman
 // Instructions for installing tranzit 2.0
 
+//Rename _clientids_transit_snow_solo-compiled to _clientids
+
+//Rename _clientids_transit_snow_coop-compiled to _clientids
+
+// If you plan on playing solo, use the solo _clientids
+   If you plan on playing coop, use the coop _clientids
+   Don't try to have 2 _clientids files in the gametypes_zm folder at the same time, will not work!!
+
 1. Download the following compiled files: _clientids, _zm_ffotd, zm_transit, zm_transit_ffotd, zm_transit_lava & zm_transit_fx.
 2. Download the following images 1 & 2 zip files.
 
