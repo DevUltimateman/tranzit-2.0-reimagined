@@ -24,7 +24,7 @@
 9. Paste zm_transit, zm_transit_fx, zm_transit_ffotd & zm_transit_lava inside your mp folder.
 10. Create a folder called gametypes_zm inside of your mp folder.
 
-11. Paste _clientids file inside of the folder called gametypes_zm.
+11. Paste _clientids file inside of the folder called gametypes_zm. /  Keep in mind that you must rename the _clientids_xxxxxxxxx_xxxx to _clientids
 12. Create a folder called zombies inside of your mp folder.
 13. Paste _zm_ffotd inside of your zombies folder.
 
