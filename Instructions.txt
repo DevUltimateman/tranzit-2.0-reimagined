@@ -16,7 +16,7 @@
 4. In the folder called t6r, create a new folder called data. ( if you already don't have one )
 
 5. In the folder called data create a folder called images & a folder called maps. ( if you already don't have those )
-6. Extract all the files from both images1 & images2 to inside the folder called images you created.
+6. Extract all the files from both images1 & images2 to inside the folder called images that you just created in the folder data.
 
 7. Once done with the previous step, go back to the folder called data and double click on the folder called maps.
 8. Create a new folder called mp inside of the maps folder.
