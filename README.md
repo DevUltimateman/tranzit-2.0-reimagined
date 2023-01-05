@@ -1,5 +1,5 @@
 # tranzit-2.0-reimagined
-A project for Black Ops 2 Zombies.
+A reimagination project for BO2's Tranzit Zombies Map.
 
 // Our discord group: https://discord.gg/8bzK5Hu
 
