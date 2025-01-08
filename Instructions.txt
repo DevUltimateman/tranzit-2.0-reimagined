@@ -1,31 +1,5 @@
 // Mod creator: Ultimateman
 // Instructions for installing tranzit 2.0
-
-//Rename _clientids_transit_snow_solo-compiled to _clientids
-
-//Rename _clientids_transit_snow_coop-compiled to _clientids
-
-// If you plan on playing solo, use the solo _clientids
-   If you plan on playing coop, use the coop _clientids
-   Don't try to have 2 _clientids files in the gametypes_zm folder at the same time, will not work!!
-
-1. Download the following compiled files: _clientids, _zm_ffotd, zm_transit, zm_transit_ffotd, zm_transit_lava & zm_transit_fx.
-2. Download the following images 1 & 2 zip files.
-
-3. In your Black Ops 2 root folder create a folder called: t6r if you don't have that folder already.
-4. In the folder called t6r, create a new folder called data. ( if you already don't have one )
-
-5. In the folder called data create a folder called images & a folder called maps. ( if you already don't have those )
-6. Extract all the files from both images1 & images2 to inside the folder called images that you just created in the folder data.
-
-7. Once done with the previous step, go back to the folder called data and double click on the folder called maps.
-8. Create a new folder called mp inside of the maps folder.
-
-9. Paste zm_transit, zm_transit_fx, zm_transit_ffotd & zm_transit_lava inside your mp folder.
-10. Create a folder called gametypes_zm inside of your mp folder.
-
-11. Paste _clientids file inside of the folder called gametypes_zm. /  Keep in mind that you must rename the _clientids_xxxxxxxxx_xxxx to _clientids
-12. Create a folder called zombies inside of your mp folder.
-13. Paste _zm_ffotd inside of your zombies folder.
-
-14. You're all done!
+// Original Tranzit Reimagined 2020 Version
+// Patched to support r4524 on Plutonium
+// Drag scripts & images folders to your storage\t6\
